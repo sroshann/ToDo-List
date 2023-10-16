@@ -1,8 +1,8 @@
 :root {
 
-  --dark : #2E333A;
-  --grey : #B2C2CB;
-  --blue : #0ED2F6;
+  --dark: #2E333A;
+  --grey: #B2C2CB;
+  --blue: #0ED2F6;
 
 }
 
@@ -43,14 +43,15 @@
 
 }
 
-#input-box i {  
+#input-box i {
 
   color: white;
   font-size: 20px;
 
 }
-#input-box input { 
-  
+
+#input-box input {
+
   width: 90%;
   height: 87%;
   background-color: transparent;
@@ -63,6 +64,84 @@
 
 #three-categories {
 
-  height: 70%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.categories-1 {
+  background: #ff605c;
+}
+
+.categories-2 {
+  background: #ffbd44;
+}
+
+.categories-3 {
+  background: #00CA4E;
+}
+
+.categories-1,
+.categories-2,
+.categories-3 {
+
+  width: 26.66%;
+  float: left;
+  border-radius: 10px;
+
+}
+
+.heading {
+
+  display: grid;
+  place-items: center;
+  color: aliceblue;
+
+}
+
+.heading p {
+  padding-top: 10px;
+}
+
+.tasks {
+  margin-top: 3%;
+}
+
+.task {
+
+  width: 75%;
+  padding: 13px 25px;
+  background: white;
+  border-radius: 6px;
+  opacity: 0.5;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+
+} 
+
+.task input:nth-child(1) {
+
+  position: relative;
+  left: -5%;
+
+}
+
+.task input:nth-child(2) {  
+
+  width: 100%;
+  color: #3B4451;
+  outline: none;
+  border: 0;
+
+}
+
+.task i {
+
+  position: relative;
+  right: -7%;
 
 }
