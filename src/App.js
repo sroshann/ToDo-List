@@ -3,8 +3,10 @@ import { useState } from 'react'
 
 function App() {
 
-  const [ task , addTask ] = useState( '' )
-  const [ lists , addToList ] = useState( [] )
+  const [task, addTask] = useState('')
+  const [lists, addToList] = useState([])
+  const [comlete_list, addToComplete] = useState([])
+  const [drop_list, addToDrop] = useState([])
 
   return (
 
@@ -14,8 +16,9 @@ function App() {
 
         <div id="input-box">
 
-          <input value={ task } onChange={ ( event ) => { addTask( event.target.value ) } } type="text" name="" id="" placeholder='Enter the task' />
-          <i class='bx bx-plus'></i>
+          <input value={task} onChange={(event) => { addTask(event.target.value) }} type="text" name="" id="" placeholder='Enter the task' />
+          <i onClick={() => { addToList([...lists, { id: Date.now(), text: task, status: null }]) }} class='bx bx-plus'></i>
+          {/* {console.log(lists)} */}
 
         </div>
 
@@ -27,13 +30,33 @@ function App() {
           <section className="heading"><p>Dropped</p></section>
           <section className="tasks">
 
-            <div className="task">
+            {
 
-              <input type="checkbox" name="" id="" />
-              <input type="text" name="" id="" readOnly />
-              <i class='bx bx-x'></i>
+              drop_list.map((each_task) => {
 
-            </div>
+                return (
+
+                  <div className="task">
+
+                    <p> {each_task.text} </p>
+                    <i onClick={() => {
+
+                      addToDrop(drop_list.filter(deleting => {
+
+                        if (deleting.id === each_task.id) deleting = null
+                        return deleting
+
+                      }))
+
+                    }} class='bx bxs-trash'></i>
+
+                  </div>
+
+                )
+
+              })
+
+            }
 
           </section>
 
@@ -43,13 +66,58 @@ function App() {
           <section className="heading"><p>Proceeding</p></section>
           <section className="tasks">
 
-            <div className="task">
+            {
 
-              <input type="checkbox" name="" id="" />
-              <input type="text" name="" id="" readOnly />
-              <i class='bx bx-x'></i>
+              lists.map((each_task) => {
 
-            </div>
+                return (
+
+                  <div className="task">
+
+                    <input onChange={(event) => {
+
+
+                      addToList(lists.filter(selected => {
+
+                        if (selected.id === each_task.id) {
+
+                          selected.status = event.target.checked
+                          addToComplete([...comlete_list, selected])
+                          selected = null
+
+                        }
+                        return selected
+
+                      }))
+
+
+
+                    }} type="checkbox" name="" id="" />
+                    <p>{each_task.text}</p>
+                    <i onClick={() => {
+
+                      addToList(lists.filter(selected => {
+
+                        if (selected.id === each_task.id) {
+
+                          selected.status = false
+                          addToDrop([...drop_list, selected])
+                          selected = null
+
+                        }
+                        return selected
+
+                      }))
+
+                    }} class='bx bx-x'></i>
+
+                  </div>
+
+                )
+
+              })
+
+            }
 
           </section>
 
@@ -59,13 +127,34 @@ function App() {
           <section className="heading"><p>Completed</p></section>
           <section className="tasks">
 
-            <div className="task">
+            {
 
-              <input type="checkbox" name="" id="" />
-              <input type="text" name="" id="" readOnly />
-              <i class='bx bx-x'></i>
+              comlete_list.map((each_task) => {
 
-            </div>
+                return (
+
+                  <div className="task">
+
+                    <p> {each_task.text} </p>
+                    <i onClick={() => {
+
+                      addToComplete(comlete_list.filter(deleting => {
+
+                        if (deleting.id === each_task.id) deleting = null
+                        return deleting
+
+                      }))
+
+                    }} class='bx bxs-trash'></i>
+
+                  </div>
+
+                )
+
+
+              })
+
+            }
 
           </section>
 
