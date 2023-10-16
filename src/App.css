@@ -1,0 +1,68 @@
+:root {
+
+  --dark : #2E333A;
+  --grey : #B2C2CB;
+  --blue : #0ED2F6;
+
+}
+
+* {
+
+  margin: 0;
+  font-family: Poppins;
+  font-style: normal;
+  scroll-behavior: smooth;
+
+}
+
+.App {
+
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark);
+
+}
+
+#input {
+
+  height: 30%;
+  display: grid;
+  place-items: center;
+
+}
+
+#input-box {
+
+  width: 40%;
+  height: 21%;
+  display: flex;
+  align-items: center;
+  background-color: var(--dark);
+  border-radius: 25px;
+  box-shadow: 6.22302px 6.22302px 18.66907px 0px #000, -6.22302px -6.22302px 18.66907px 0px #3B4451;
+
+}
+
+#input-box i {  
+
+  color: white;
+  font-size: 20px;
+
+}
+#input-box input { 
+  
+  width: 90%;
+  height: 87%;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  padding-left: 15px;
+  color: white;
+
+}
+
+#three-categories {
+
+  height: 70%;
+
+}
