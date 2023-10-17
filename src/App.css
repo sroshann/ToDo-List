@@ -69,23 +69,14 @@
 
 }
 
-.categories-1 {
-  background: #ff605c;
-}
+.categories-1 { background: #ff605c; }
+.categories-2 { background: #ffbd44; }
+.categories-3 { background: #00CA4E; }
 
-.categories-2 {
-  background: #ffbd44;
-}
-
-.categories-3 {
-  background: #00CA4E;
-}
-
-.categories-1,
-.categories-2,
-.categories-3 {
+.categories-1 , .categories-2 , .categories-3 {
 
   width: 26.66%;
+  height: fit-content;
   float: left;
   border-radius: 10px;
 
@@ -110,7 +101,7 @@
 .task {
 
   width: 75%;
-  padding: 13px 25px;
+  padding: 8px 25px;
   background: white;
   border-radius: 6px;
   opacity: 0.5;
@@ -130,12 +121,21 @@
 
 }
 
-.task p {  
+.task #texts{ width: 100%; }
 
-  width: 100%;
+#texts p:nth-child(1) {  
+
+  width: fit-content;
   color: #3B4451;
   outline: none;
   border: 0;
+
+}
+
+#texts p:nth-child(2) { 
+
+  width: fit-content;
+  font-size: 10px;
 
 }
 

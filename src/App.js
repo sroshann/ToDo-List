@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react'
+import { toast, Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -12,12 +13,31 @@ function App() {
 
     <div className="App">
 
+      <Toaster toastOptions={{ duration: 1000 }} />
+
       <section id='input' >
 
         <div id="input-box">
 
           <input value={task} onChange={(event) => { addTask(event.target.value) }} type="text" name="" id="" placeholder='Enter the task' />
-          <i onClick={() => { addToList([...lists, { id: Date.now(), text: task, status: null }]) }} class='bx bx-plus'></i>
+          <i onClick={() => {
+
+            const date = new Date();
+            const options = {
+
+              day: 'numeric',
+              month: 'numeric',
+              year: 'numeric',
+              weekday: 'long',
+
+            };
+
+            addToList([...lists, { id: Date.now(), text: task, status: null, date: date.toLocaleString('en-IN', options) }])
+            toast.success("Task added")
+
+          }
+
+          } class='bx bx-plus'></i>
           {/* {console.log(lists)} */}
 
         </div>
@@ -38,7 +58,12 @@ function App() {
 
                   <div className="task">
 
-                    <p> {each_task.text} </p>
+                    <div id='texts' >
+
+                      <p> {each_task.text} </p>
+                      <p> {each_task.date} </p>
+
+                    </div>
                     <i onClick={() => {
 
                       addToDrop(drop_list.filter(deleting => {
@@ -76,12 +101,22 @@ function App() {
 
                     <input onChange={(event) => {
 
+                      const date = new Date();
+                      const options = {
+
+                        day: 'numeric',
+                        month: 'numeric',
+                        year: 'numeric',
+                        weekday: 'long',
+
+                      };
 
                       addToList(lists.filter(selected => {
 
                         if (selected.id === each_task.id) {
 
                           selected.status = event.target.checked
+                          selected.date = date.toLocaleString('en-IN', options)
                           addToComplete([...comlete_list, selected])
                           selected = null
 
@@ -90,17 +125,31 @@ function App() {
 
                       }))
 
-
-
                     }} type="checkbox" name="" id="" />
-                    <p>{each_task.text}</p>
+                    <div id='texts' >
+
+                      <p> {each_task.text} </p>
+                      <p> {each_task.date} </p>
+
+                    </div>
                     <i onClick={() => {
+
+                      const date = new Date();
+                      const options = {
+
+                        day: 'numeric',
+                        month: 'numeric',
+                        year: 'numeric',
+                        weekday: 'long',
+
+                      };
 
                       addToList(lists.filter(selected => {
 
                         if (selected.id === each_task.id) {
 
                           selected.status = false
+                          selected.date = date.toLocaleString('en-IN', options)
                           addToDrop([...drop_list, selected])
                           selected = null
 
@@ -135,7 +184,12 @@ function App() {
 
                   <div className="task">
 
-                    <p> {each_task.text} </p>
+                    <div id='texts' >
+
+                      <p> {each_task.text} </p>
+                      <p> {each_task.date} </p>
+
+                    </div>
                     <i onClick={() => {
 
                       addToComplete(comlete_list.filter(deleting => {
