@@ -15,7 +15,7 @@ function App() {
 
       <Toaster toastOptions={{ duration: 1000 }} />
 
-      <section id='input' >
+      <section id='input'>
 
         <div id="input-box">
 
@@ -87,6 +87,7 @@ function App() {
 
         </div>
         <div className="categories-2">
+
 
           <section className="heading"><p>Proceeding</p></section>
           <section className="tasks">
